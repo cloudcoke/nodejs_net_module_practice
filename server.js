@@ -13,14 +13,15 @@ const server = net.createServer((c) => {
   c.on("data", (chunk) => {
     const res = response(c);
     const req = request(chunk);
+    console.log(req.path);
     const reqType = req.path.split(".").pop();
 
-    if (req.method === "GET" && req.path === "/") {
-      res.sendFile("index.html");
-    } else if (req.method === "GET" && req.path === "/index") {
-      res.sendFile("index.html");
-    } else if (req.method === "GET" && req.path === `/index.${reqType}`) {
-      res.sendFile(`index.${reqType}`, type[reqType]);
+    if (req.method === "GET") {
+      if (req.path === "/") {
+        res.sendFile("index.html");
+      } else {
+        res.sendFile(`${req.path}`, type[reqType]);
+      }
     }
   });
 });
