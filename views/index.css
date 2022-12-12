@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+body {
+  font-family: "NanumBarunGothic";
+  background-color: #777;
+}
+
+header {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  /* base header */
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 0;
+  background: rgba(50, 50, 50, 0.9);
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+header.active::after {
+  height: 190px;
+  visibility: visible;
+}
+
+header > .header-wrap {
+  width: 1200px;
+  height: 102px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+header > .header-wrap > h1 {
+  width: 176px;
+}
+
+header > .header-wrap > .nav-container {
+  width: 900px;
+}
+
+header > .header-wrap > h2 {
+  margin: 42px 42px 0 42px;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+header > .header-wrap > .nav-container > nav > .dep1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+header > .header-wrap > .nav-container > nav > .dep1 > li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+header > .header-wrap > .nav-container > nav > .dep1 > li > a {
+  width: 180px;
+  height: 102px;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  color: #004385;
+}
+
+.dep2 {
+  /* base .header-wrap */
+  position: absolute;
+  visibility: hidden;
+  top: 102px;
+  padding-top: 8px;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.dep2 > ul > li {
+  width: 180px;
+  text-align: center;
+}
+
+.dep2 > ul > li > a {
+  display: inline-block;
+  width: 100%;
+  height: 35px;
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #afafaf;
+}
+
+.dep2 > ul > li > a:hover {
+  color: #ebebeb;
+}
