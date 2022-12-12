@@ -13,7 +13,6 @@ const server = net.createServer((c) => {
   c.on("data", (chunk) => {
     const res = response(c);
     const req = request(chunk);
-    console.log(req.path);
     const reqType = req.path.split(".").pop();
 
     if (req.method === "GET") {
