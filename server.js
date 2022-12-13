@@ -11,15 +11,21 @@ const server = net.createServer((c) => {
   c.setEncoding("utf-8");
 
   c.on("data", (chunk) => {
-    const res = response(c);
     const req = request(chunk);
+    const res = response(c);
     const reqType = req.path.split(".").pop();
 
     if (req.method === "GET") {
       if (req.path === "/") {
         res.sendFile("index.html");
-      } else {
+      } else if (req.path.indexOf(".html") !== -1) {
         res.sendFile(`${req.path}`, type[reqType]);
+      } else {
+        res.sendFile(`${req.path}.html`, type["html"]);
+      }
+    } else if (req.method === "POST") {
+      if (req.path === "/board/login.html") {
+        res.sendFile("/board/login.html", type[reqType], req.body);
       }
     }
   });
